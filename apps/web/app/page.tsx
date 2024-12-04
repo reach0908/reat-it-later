@@ -1,68 +1,79 @@
-import { Button } from "@repo/ui";
 import Link from "next/link";
-
-// 북마크된 글 목록을 위한 임시 데이터
-const bookmarks = [
-  {
-    id: 1,
-    title: "리액트 훅스 완벽 가이드",
-    url: "https://example.com/react-hooks",
-  },
-  {
-    id: 2,
-    title: "타입스크립트 시작하기",
-    url: "https://example.com/typescript-intro",
-  },
-  {
-    id: 3,
-    title: "Next.js 13 새로운 기능",
-    url: "https://example.com/nextjs-13-features",
-  },
-];
 
 export default function Home() {
   return (
-    <div className="flex">
-      {/* 사이드 내비게이션 */}
-      <nav className="w-64 h-screen bg-gray-100 p-4">
-        <h2 className="text-xl font-bold mb-4">메뉴</h2>
-        <ul>
-          <li>
-            <Link href="/" className="block py-2">
-              홈
+    <div className="min-h-screen">
+      {/* 네비게이션 바 */}
+      <nav className="bg-white shadow-lg p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <Link href="/" className="text-xl font-bold">
+            북마크 서비스
+          </Link>
+          <div className="space-x-4">
+            <Link
+              href="/auth/signin"
+              className="text-gray-600 hover:text-gray-900"
+            >
+              로그인
             </Link>
-          </li>
-          <li>
-            <Link href="/bookmarks" className="block py-2">
-              북마크
+            <Link
+              href="/auth/signup"
+              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+            >
+              회원가입
             </Link>
-          </li>
-          <li>
-            <Link href="/settings" className="block py-2">
-              설정
-            </Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       </nav>
 
-      {/* 메인 컨텐츠 */}
-      <main className="flex-1 p-8">
-        <h1 className="text-2xl font-bold mb-6">내 북마크</h1>
-        <ul>
-          {bookmarks.map((bookmark) => (
-            <li key={bookmark.id} className="mb-4 p-4 border rounded">
-              <a
-                href={bookmark.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
+      {/* 히어로 섹션 */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            모든 북마크를 한곳에서 관리하세요
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            간편하고 효율적인 북마크 관리 서비스를 경험해보세요
+          </p>
+          <Link
+            href="/dashboard"
+            className="bg-blue-500 text-white px-8 py-3 rounded-lg text-lg hover:bg-blue-600"
+          >
+            무료로 시작하기
+          </Link>
+        </div>
+      </section>
+
+      {/* 기능 소개 섹션 */}
+      <section className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">주요 기능</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "간편한 저장",
+                description: "원클릭으로 웹페이지를 저장하세요",
+              },
+              {
+                title: "스마트 정리",
+                description: "태그와 폴더로 체계적인 관리가 가능합니다",
+              },
+              {
+                title: "어디서나 접근",
+                description: "모든 기기에서 북마크에 접근하세요",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="text-center p-6 bg-white rounded-lg shadow-sm"
               >
-                {bookmark.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </main>
+                <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

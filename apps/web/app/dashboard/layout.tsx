@@ -16,7 +16,7 @@ export default function DashboardLayout({
             <div className="flex">
               <Link href="/dashboard" className="flex items-center">
                 <span className="text-xl font-bold text-gray-900">
-                  북마크 대시보드
+                  YouScript 대시보드
                 </span>
               </Link>
             </div>
@@ -41,19 +41,19 @@ export default function DashboardLayout({
               href="/dashboard"
               className="block px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
             >
-              전체 북마크
+              전체 스크립트
             </Link>
             <Link
-              href="/dashboard/folders"
+              href="/dashboard/favorites"
               className="block px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
             >
-              폴더 관리
+              즐겨찾기
             </Link>
             <Link
-              href="/dashboard/tags"
+              href="/dashboard/channels"
               className="block px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
             >
-              태그 관리
+              채널별 보기
             </Link>
             <Link
               href="/dashboard/settings"

@@ -132,9 +132,14 @@ export default function ArticlePage() {
                       className="ml-2 text-sm text-blue-500 hover:text-blue-600"
                       onClick={() => {
                         const newTranscripts = [...article.transcripts];
-                        newTranscripts[index].isHighlighted =
-                          !newTranscripts[index].isHighlighted;
-                        setArticle({ ...article, transcripts: newTranscripts });
+                        if (newTranscripts[index]) {
+                          newTranscripts[index].isHighlighted =
+                            !newTranscripts[index].isHighlighted;
+                          setArticle({
+                            ...article,
+                            transcripts: newTranscripts,
+                          });
+                        }
                       }}
                     >
                       {transcript.isHighlighted
